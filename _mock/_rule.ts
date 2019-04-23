@@ -6,7 +6,8 @@ const list = [];
 for (let i = 0; i < 46; i += 1) {
   list.push({
     key: i,
-    disabled: i % 6 === 0,
+    // disabled: i % 6 === 0,
+    disabled: false,
     href: 'https://ant.design',
     avatar: [
       'https://gw.alipayobjects.com/zos/rmsportal/eeHMaZBwmTvLdIwMfBpg.png',
