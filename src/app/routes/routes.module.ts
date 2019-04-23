@@ -2,8 +2,12 @@ import { NgModule } from '@angular/core';
 
 import { SharedModule } from '@shared';
 import { RouteRoutingModule } from './routes-routing.module';
+
 // dashboard pages
+// test
 import { TestComponent } from './test/test.component';
+import { TestDetilsModal } from './test/test.detils.modal';
+
 import { DashboardV1Component } from './dashboard/v1/v1.component';
 import { DashboardAnalysisComponent } from './dashboard/analysis/analysis.component';
 import { DashboardMonitorComponent } from './dashboard/monitor/monitor.component';
@@ -30,7 +34,9 @@ const COMPONENTS = [
   UserLockComponent,
   CallbackComponent
 ];
-const COMPONENTS_NOROUNT = [];
+const COMPONENTS_NOROUNT = [
+  TestDetilsModal
+];
 
 @NgModule({
   imports: [SharedModule, RouteRoutingModule],
