@@ -12,7 +12,7 @@ import { TestDetilsModal } from './test.detils.modal';
 })
 export class TestComponent implements OnInit {
   /**
-   * 参数初始化
+   * 列表筛选条件
    */
   q: any = {
     pi: 2,
@@ -39,6 +39,7 @@ export class TestComponent implements OnInit {
   appConfig:any = AppConfig;
   /**
    * 表格基本配置
+   * index 展示映射字段
    */
   columns: STColumn[] = [
     { title: '', index: 'key', type: 'checkbox' },
@@ -105,7 +106,7 @@ export class TestComponent implements OnInit {
    * 业务变量
    */
   description = '';
-  // totalCallNo = 0;
+  totalCallNo = 0;
   expandForm = false;
 
   constructor(
@@ -126,11 +127,13 @@ export class TestComponent implements OnInit {
     this.http
       .get('/rule', this.q)
       .pipe(
-        map((list: any[]) =>
-          list.map(i => {
-            return i;
-          }),
-        ),
+        map((list: any[]) =>{
+            if(list) {
+                return list.map(i => {
+                  return i;
+                })
+            }
+        }),
         tap(() => (this.loading = false)),
       )
       .subscribe(res => {
@@ -161,7 +164,7 @@ export class TestComponent implements OnInit {
    */
   remove(row:any) {
     this.http
-      .delete('/rule', { nos: row.no })
+      .delete('/rule', { id: row.id })
       .subscribe(() => {
         this.getData();
         this.st.clearCheck();

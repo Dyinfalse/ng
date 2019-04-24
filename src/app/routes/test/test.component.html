@@ -1,4 +1,4 @@
-
+<!-- 页面 -->
 <page-header [title]="'查询表格'"></page-header>
 <nz-card [nzBordered]="false">
     <form nz-form [nzLayout]="'inline'" class="search__form">
@@ -32,11 +32,23 @@
     <st #st [columns]="columns" [data]="data" [loading]="loading" (change)="stChange($event)">
     </st>
 </nz-card>
-<!-- 新建模板 -->
+<!-- 新建模板 弹窗 -->
 <ng-template #modalAdd>
     <nz-form-item>
-        <nz-form-label nzFor="no">描述</nz-form-label>
-        <nz-form-control>
+        <nz-form-label [nzSm]="3" [nzXs]="24" nzFor="no">描述</nz-form-label>
+        <nz-form-control [nzSm]="9" [nzXs]="24">
+            <input nz-input [(ngModel)]="description" name="description" placeholder="请输入" id="no">
+        </nz-form-control>
+
+        <nz-form-label [nzSm]="3" [nzXs]="24" nzFor="no">描述</nz-form-label>
+        <nz-form-control [nzSm]="9" [nzXs]="24">
+            <input nz-input [(ngModel)]="description" name="description" placeholder="请输入" id="no">
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label [nzSm]="3" [nzXs]="24" nzFor="no">描述</nz-form-label>
+        <nz-form-control [nzSm]="21" [nzXs]="24">
             <input nz-input [(ngModel)]="description" name="description" placeholder="请输入" id="no">
         </nz-form-control>
     </nz-form-item>
