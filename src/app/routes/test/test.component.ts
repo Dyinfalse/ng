@@ -5,6 +5,7 @@ import { _HttpClient } from '@delon/theme';
 import { tap, map } from 'rxjs/operators';
 import { STComponent, STColumn, STData, STChange } from '@delon/abc';
 import { TestDetilsModal } from './test.detils.modal';
+import { MyeditorComponent } from '../../tinymce/tinymce.component';
 
 @Component({
   templateUrl: './test.component.html',
@@ -203,6 +204,10 @@ export class TestComponent implements OnInit {
           .subscribe(() => this.getData());
       },
     });
+  }
+
+  keyupHandlerFunction(event){
+      console.log(event)
   }
 
   /**

@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { SimpleGuard } from '@delon/auth';
 import { environment } from '@env/environment';
 import { TestComponent } from './test/test.component';
+// 富文本编辑器
+import { MyeditorComponent } from '../tinymce/tinymce.component';
 // layout
 import { LayoutDefaultComponent } from '../layout/default/default.component';
 import { LayoutFullScreenComponent } from '../layout/fullscreen/fullscreen.component';
