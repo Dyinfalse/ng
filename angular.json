@@ -24,7 +24,8 @@
             "polyfills": "src/polyfills.ts",
             "assets": [
               "src/assets",
-              "src/favicon.ico"
+              "src/favicon.ico",
+              "src/skins"
             ],
             "styles": [
               "src/styles.less"
@@ -42,6 +43,7 @@
               "node_modules/tinymce/plugins/table/plugin.js",
               "node_modules/tinymce/plugins/image/plugin.js",
               "node_modules/tinymce/plugins/imagetools/plugin.js",
+              "node_modules/tinymce/plugins/textcolor/plugin.js",
               "src/assets/zh_CN.js"
             ]
           },

@@ -8,7 +8,8 @@ import { RouteRoutingModule } from './routes-routing.module';
 import { TestComponent } from './test/test.component';
 import { TestDetilsModal } from './test/test.detils.modal';
 // 富文本编辑器
-import { MyeditorComponent } from '../tinymce/tinymce.component';
+import { MyeditorComponent } from '../tinymce';
+import { TestTinymceComponent } from './testTinymce/testTinymce.component';
 
 import { DashboardV1Component } from './dashboard/v1/v1.component';
 import { DashboardAnalysisComponent } from './dashboard/analysis/analysis.component';
@@ -25,6 +26,7 @@ import { CallbackComponent } from './callback/callback.component';
 const COMPONENTS = [
   MyeditorComponent,
   TestComponent,
+  TestTinymceComponent,
   DashboardV1Component,
   DashboardAnalysisComponent,
   DashboardMonitorComponent,

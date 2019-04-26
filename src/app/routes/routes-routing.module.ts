@@ -4,7 +4,7 @@ import { SimpleGuard } from '@delon/auth';
 import { environment } from '@env/environment';
 import { TestComponent } from './test/test.component';
 // 富文本编辑器
-import { MyeditorComponent } from '../tinymce/tinymce.component';
+import { TestTinymceComponent } from './testTinymce/testTinymce.component';
 // layout
 import { LayoutDefaultComponent } from '../layout/default/default.component';
 import { LayoutFullScreenComponent } from '../layout/fullscreen/fullscreen.component';
@@ -30,6 +30,7 @@ const routes: Routes = [
     canActivateChild: [SimpleGuard],
     children: [
       { path: 'test', component: TestComponent},
+      { path: 'testTinymce', component: TestTinymceComponent },
       { path: '', redirectTo: 'dashboard/v1', pathMatch: 'full' },
       { path: 'dashboard', redirectTo: 'dashboard/v1', pathMatch: 'full' },
       { path: 'dashboard/v1', component: DashboardV1Component },

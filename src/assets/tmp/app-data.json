@@ -61,6 +61,12 @@
           "group": true,
           "hideInBreadcrumb": true,
           "link": "/test"
+        },
+        {
+          "text":"测试富文本页面",
+          "group": true,
+          "hideInBreadcrumb": true,
+          "link": "/testTinymce"
         }
       ]
     },

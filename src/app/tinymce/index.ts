@@ -20,12 +20,20 @@ export class MyeditorComponent implements AfterViewInit, OnDestroy {
         tinymce.init({
             // selector: '#' + this.elementId,
             selector: '#test',
-            plugins: ['link', 'paste', 'table','image'],
+            plugins: 'link paste table image ',
+            toolbar: 'formatselect | bold italic strikethrough forecolor backcolor | link image | alignleft aligncenter alignright alignjustify  | outdent indent | removeformat',
             skin_url: './assets/skins/ui/oxide',
             language: 'zh_CN',
-            setup: function(editor){
+            height: 400,
+            width: 500,
+            images_upload_handler: (blobInfo, success, failure)=>{
+                console.log(blobInfo) // 图片数据流
+                console.log(success) // 向组件发送上传之后的图片地址
+                console.log(failure)
+            },
+            setup: editor => {
                 _this.editor = editor;
-                editor.on('keyup', function() {
+                editor.on('keyup', ()=> {
                     const content = editor.getContent();
                     _this.onEditorKeyup.emit(content);
                 });
