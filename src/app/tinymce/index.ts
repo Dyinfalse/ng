@@ -20,7 +20,7 @@ export class MyeditorComponent implements AfterViewInit, OnDestroy {
         tinymce.init({
             // selector: '#' + this.elementId,
             selector: '#test',
-            plugins: 'link paste table image ',
+            plugins: 'link paste table image',
             toolbar: 'formatselect | bold italic strikethrough forecolor backcolor | link image | alignleft aligncenter alignright alignjustify  | outdent indent | removeformat',
             skin_url: './assets/skins/ui/oxide',
             language: 'zh_CN',
