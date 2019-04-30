@@ -1,8 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
-.alain-default .page-header {
-    margin-bottom: 8px;
+// .alain-default .page-header {
+//     margin-bottom: 8px;
+// }
+
+// .alain-default__content {
+//     margin-left: 208px;
+// }
+
+.pull-left {
+    float: left;
 }
 
-.alain-default__content {
-    margin-left: 208px;
+.pull-right {
+    float: right;
+}
+
+.clear:after {
+    visibility: hidden; 
+    display: block; 
+    font-size: 0; 
+    content: "."; 
+    clear: both; 
+    height: 0; 
+} 
+* html .clear {
+    zoom: 1; 
+}
+
+// page-head
+.page-header .ant-breadcrumb, .page-header__title {
+    margin-bottom: 8px;
+}
+.page-header {
+    padding: 8px 32px 0 32px;
 }

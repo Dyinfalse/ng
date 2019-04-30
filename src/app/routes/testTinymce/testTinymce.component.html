@@ -1,2 +1,9 @@
-<simple-tiny [elementId]="'editor-id'" (onEditorKeyup)="keyupHandlerFunction($event)">
-</simple-tiny>
+<div nz-row [nzGutter]="16">
+    <div nz-col nzMd="12" nzSm="24">
+        <simple-tiny [elementId]="'editor-id'" (onEditorKeyup)="keyupHandlerFunction($event)">
+        </simple-tiny>
+    </div>
+    <div nz-col nzMd="12" nzSm="24">
+        <div id="htmlResult"></div>
+    </div>
+</div>

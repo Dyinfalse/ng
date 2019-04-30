@@ -25,7 +25,7 @@ export class MyeditorComponent implements AfterViewInit, OnDestroy {
             skin_url: './assets/skins/ui/oxide',
             language: 'zh_CN',
             height: 400,
-            width: 500,
+            width: '100%',
             images_upload_handler: (blobInfo, success, failure)=>{
                 console.log(blobInfo) // 图片数据流
                 console.log(success) // 向组件发送上传之后的图片地址
