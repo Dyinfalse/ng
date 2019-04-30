@@ -6,7 +6,7 @@
             <div nz-col nzMd="4" nzSm="24">
                 <nz-form-item>
                     <nz-form-control>
-                        <input nz-input [(ngModel)]="q.keyword" name="no" placeholder="请输入" id="no">
+                        <input nz-input [(ngModel)]="query.keyword" name="no" placeholder="请输入" id="no">
                     </nz-form-control>
                 </nz-form-item>
             </div>
@@ -29,6 +29,6 @@
             </button>
         </div>
     </form>
-    <st #st [columns]="columns" [data]="data" [loading]="loading" (change)="stChange($event)">
+    <st #st [columns]="columns" [data]="data" [pi]="query.page" [page]="stPage" [ps]="query.size" [total]="total" [loading]="loading" (change)="stChange($event)">
     </st>
 </nz-card>

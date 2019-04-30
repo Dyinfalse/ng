@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core'
+import { Component } from '@angular/core'
 import { NzModalRef } from 'ng-zorro-antd';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -24,7 +24,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
             <nz-form-item>
               <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired nzFor="company">公司ID</nz-form-label>
               <nz-form-control [nzSm]="19" [nzXs]="24">
-                <input nz-input formControlName="company" id="company" />
+                <input nz-input formControlName="company" placeholder="请输入公司id" id="company" />
                 <nz-form-explain *ngIf="validateForm.get('company')?.dirty && validateForm.get('company')?.errors">
                   请输入公司id
                 </nz-form-explain>
@@ -34,7 +34,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
             <nz-form-item>
               <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired nzFor="parentid">上级部门ID</nz-form-label>
               <nz-form-control [nzSm]="19" [nzXs]="24">
-                <input nz-input formControlName="parentid" id="parentid" />
+                <input nz-input formControlName="parentid" placeholder="请输入上级部门ID" id="parentid" />
                 <nz-form-explain *ngIf="validateForm.get('parentid')?.dirty && validateForm.get('parentid')?.errors">
                   请输入上级部门ID
                 </nz-form-explain>
@@ -44,7 +44,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
             <nz-form-item>
               <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired nzFor="departname">部门名称</nz-form-label>
               <nz-form-control [nzSm]="19" [nzXs]="24">
-                <input nz-input formControlName="departname" id="departname" />
+                <input nz-input formControlName="departname" placeholder="请输入部门名称" id="departname" />
                 <nz-form-explain *ngIf="validateForm.get('departname')?.dirty && validateForm.get('departname')?.errors">
                   请输入部门名称
                 </nz-form-explain>
@@ -54,7 +54,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
             <nz-form-item>
               <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired nzFor="comments">描述</nz-form-label>
               <nz-form-control [nzSm]="19" [nzXs]="24">
-                <input nz-input formControlName="comments" id="comments" />
+                <input nz-input formControlName="comments" placeholder="请输入描述" id="comments" />
                 <nz-form-explain *ngIf="validateForm.get('comments')?.dirty && validateForm.get('comments')?.errors">
                   请输入描述
                 </nz-form-explain>
@@ -64,7 +64,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
             <nz-form-item>
               <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired nzFor="ischarge">是否管理部门</nz-form-label>
               <nz-form-control [nzSm]="19" [nzXs]="24">
-                <input nz-input formControlName="ischarge" id="ischarge" />
+                <input nz-input formControlName="ischarge" placeholder="请输入是否管理部门" id="ischarge" />
                 <nz-form-explain *ngIf="validateForm.get('ischarge')?.dirty && validateForm.get('ischarge')?.errors">
                   请输入是否管理部门
                 </nz-form-explain>

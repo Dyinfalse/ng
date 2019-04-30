@@ -14,9 +14,24 @@ export class TestComponent implements OnInit {
   /**
    * 列表筛选条件
    */
-  q: any = {
-    keyword: ''
+  query: any = {
+    keyword: '',
+    page: 1,
+    size: 10
   };
+  
+  /**
+   * 分页总数
+   */
+  total:number = 13;
+  /**
+   * 分页配置
+   */
+  stPage = {
+    front: false,
+    placement: 'left'
+  }
+
   /**
    * post Form
    */
@@ -116,16 +131,12 @@ export class TestComponent implements OnInit {
    * 多选选中Ids
    */
   selectedRows: STData[] = [];
-  /**
-   * 业务变量
-   */
-  totalCallNo = 0;
 
   constructor(
     private http: _HttpClient,
     public msg: NzMessageService,
     private modal: ModalHelper,
-    private cdr: ChangeDetectorRef,
+    private cdr: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -137,22 +148,16 @@ export class TestComponent implements OnInit {
   getData() {
     this.loading = true;
     this.http
-      .get('/department', this.q)
+      .get('/department', this.query)
       .pipe(
         map((list: any) =>{
-            /**
-             * 数据预处理
-             */
-            if(list.data) {
-                return list.data.map(i => {
-                  return i;
-                })
-            }
+            return list;
         }),
         tap(() => (this.loading = false)),
       )
       .subscribe(res => {
-        this.data = res;
+        this.total = res.total;
+        this.data = res.data;
         this.cdr.detectChanges();
       });
   }
@@ -164,10 +169,13 @@ export class TestComponent implements OnInit {
     switch (e.type) {
       case 'checkbox':
         this.selectedRows = e.checkbox;
-        // this.totalCallNo = this.selectedRows.reduce((total, cv) => total + cv.callNo, 0);
         this.cdr.detectChanges();
         break;
       case 'filter':
+        this.getData();
+        break;
+      case 'pi':
+        this.query.page = e.pi;
         this.getData();
         break;
     }
@@ -208,17 +216,6 @@ export class TestComponent implements OnInit {
    * 新建
    */
   add() {
-    /**
-     * 清空初始数据
-     */
-    this.form = {
-      departid: '',
-      company: '',
-      parentid: '',
-      departname: '',
-      comments: '',
-      ischarge: ''
-    }
     this.modal
       .static(TestDetilsModal, {form: this.form}, this.appConfig.ModalWidth)
       .subscribe((modalRes) => {
