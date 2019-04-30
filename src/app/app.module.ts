@@ -32,6 +32,7 @@ import { I18NService } from '@core';
 
 // 加载i18n语言文件
 export function I18nHttpLoaderFactory(http: HttpClient) {
+  console.log(http)
   return new TranslateHttpLoader(http, `assets/tmp/i18n/`, '.json');
 }
 

@@ -1,7 +1,7 @@
 import { AppConfig } from '@shared';
 import { Component, OnInit, ViewChild, TemplateRef, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { NzMessageService, NzModalService } from 'ng-zorro-antd';
-import { _HttpClient } from '@delon/theme';
+import { _HttpClient, ModalHelper  } from '@delon/theme';
 import { tap, map } from 'rxjs/operators';
 import { STComponent, STColumn, STData, STChange } from '@delon/abc';
 import { TestDetilsModal } from './test.detils.modal';
@@ -15,13 +15,19 @@ export class TestComponent implements OnInit {
    * 列表筛选条件
    */
   q: any = {
-    pi: 2,
-    ps: 20,
-    sorter: '',
-    status: null,
-    statusList: [],
     keyword: ''
   };
+  /**
+   * post Form
+   */
+  form: any = {
+    departid: '',
+    company: '',
+    parentid: '',
+    departname: '',
+    comments: '',
+    ischarge: ''
+  }
   /**
    * 表格数据
    */
@@ -29,7 +35,7 @@ export class TestComponent implements OnInit {
   /**
    * 加载状态
    */
-  loading = false;
+  loading: boolean = false;
 
   @ViewChild('st')
   st: STComponent;
@@ -43,36 +49,31 @@ export class TestComponent implements OnInit {
    */
   columns: STColumn[] = [
     { title: '', index: 'key', type: 'checkbox' },
-    { title: '用户名称', index: 'no' },
-    { title: '性别', index: 'description' },
     {
-      title: '用户账号',
-      index: 'callNo',
-      type: 'number',
+      title: '部门ID',
+      index: 'departid'
     },
     {
-      title: '电话',
-      index: 'description',
+      title: '公司ID',
+      index: 'company',
+      // type: 'number' // number 默认text-left
     },
     {
-      title: '地址',
-      index: 'description',
+      title: '上级部门ID',
+      index: 'parentid',
+      // type: 'number' // number 默认text-left
     },
     {
-      title: '手机',
-      index: 'description',
+      title: '部门名称',
+      index: 'departname',
     },
     {
-      title: 'Email',
-      index: 'description',
+      title: '描述',
+      index: 'comments',
     },
     {
-      title: '邮编',
-      index: 'description',
-    },
-    {
-      title: '最近登录时间',
-      index: 'description',
+      title: '是否管理部门',
+      index: 'ischarge',
     },
     {
       title: '操作',
@@ -83,16 +84,29 @@ export class TestComponent implements OnInit {
             type: 'modal',
             modal: {
                 component: TestDetilsModal,
+                params: record => {return {form: record}},
                 size: this.appConfig.ModalWidth
             },
             click: (record: any, modal: any) => {
-                console.log(111)
+              console.log(modal)
+              if(modal){
+                this.loading = true;
+                modal = this.buildParam(modal);
+                this.http
+                .put('/department/' + modal.departid, { ...modal })
+                .subscribe(() => {
+                  this.msg.success(`编辑成功`);
+                  this.getData();
+                });
+              }
             }
         },
         {
           text: '删除',
           type: 'del',
-          click: (item: any) => this.msg.success(`删除${item.no}`),
+          click: (item: any) => {
+            this.remove(item);
+          },
         },
       ],
     },
@@ -105,14 +119,12 @@ export class TestComponent implements OnInit {
   /**
    * 业务变量
    */
-  description = '';
   totalCallNo = 0;
-  expandForm = false;
 
   constructor(
     private http: _HttpClient,
     public msg: NzMessageService,
-    private modalSrv: NzModalService,
+    private modal: ModalHelper,
     private cdr: ChangeDetectorRef,
   ) { }
 
@@ -125,11 +137,14 @@ export class TestComponent implements OnInit {
   getData() {
     this.loading = true;
     this.http
-      .get('/rule', this.q)
+      .get('/department', this.q)
       .pipe(
-        map((list: any[]) =>{
-            if(list) {
-                return list.map(i => {
+        map((list: any) =>{
+            /**
+             * 数据预处理
+             */
+            if(list.data) {
+                return list.data.map(i => {
                   return i;
                 })
             }
@@ -164,10 +179,11 @@ export class TestComponent implements OnInit {
    */
   remove(row:any) {
     this.http
-      .delete('/rule', { id: row.id })
+      .delete('/department/' + row.departid)
       .subscribe(() => {
         this.getData();
         this.st.clearCheck();
+        this.msg.success(`删除${row.departname}`)
       });
   }
 
@@ -176,7 +192,7 @@ export class TestComponent implements OnInit {
    */
   removeAll() {
     this.http
-      .delete('/rule', { nos: this.selectedRows.map(i => i.no).join(',') })
+      .delete('/department', { id: 1 })
       .subscribe(() => {
         this.getData();
         this.st.clearCheck();
@@ -191,24 +207,51 @@ export class TestComponent implements OnInit {
   /**
    * 新建
    */
-  add(tpl: TemplateRef<{}>) {
-    this.modalSrv.create({
-      nzTitle: '新建用户',
-      nzContent: tpl,
-      nzWidth: this.appConfig.ModalWidth,
-      nzOnOk: () => {
-        this.loading = true;
-        this.http
-          .post('rule', { description: this.description })
-          .subscribe(() => this.getData());
-      },
-    });
+  add() {
+    /**
+     * 清空初始数据
+     */
+    this.form = {
+      departid: '',
+      company: '',
+      parentid: '',
+      departname: '',
+      comments: '',
+      ischarge: ''
+    }
+    this.modal
+      .static(TestDetilsModal, {form: this.form}, this.appConfig.ModalWidth)
+      .subscribe((modalRes) => {
+        if(modalRes){
+          this.loading = true;
+          modalRes = this.buildParam(modalRes);
+          this.http
+          .post('/department', { ...modalRes })
+          .subscribe(() => {
+            this.msg.success(`新建成功`)
+            this.getData()
+          });
+        }
+      });
   }
 
   keyupHandlerFunction(event){
       console.log(event)
   }
 
+  /**
+   * 处理param
+   */
+  buildParam(form: any){
+    let params:any = {};
+    if(form.departid){params.departid = parseInt(form.departid);}
+    if(form.parentid){params.parentid = parseInt(form.parentid);}
+    if(form.ischarge){params.ischarge = parseInt(form.ischarge);}
+    if(form.company){params.company = parseInt(form.company)}
+    if(form.departname){params.departname = form.departname}
+    if(form.comments){params.comments = form.comments}
+    return params;
+  }
   /**
    * 刷新数据
    */

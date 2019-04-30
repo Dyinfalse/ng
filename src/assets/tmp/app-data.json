@@ -60,12 +60,14 @@
           "text":"测试表格页面",
           "group": true,
           "hideInBreadcrumb": true,
+          "icon": "anticon anticon-share-alt",
           "link": "/test"
         },
         {
           "text":"测试富文本页面",
           "group": true,
           "hideInBreadcrumb": true,
+          "icon": "anticon anticon-edit",
           "link": "/testTinymce"
         }
       ]

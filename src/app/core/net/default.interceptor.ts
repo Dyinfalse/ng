@@ -106,13 +106,15 @@ export class DefaultInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // 统一加上服务端前缀
     let url = req.url;
-    if (!url.startsWith('https://') && !url.startsWith('http://')) {
+    if(url.indexOf('.json') > -1){
+      url = './' + url;
+    }else if (!url.startsWith('https://') && !url.startsWith('http://')) {
       url = environment.SERVER_URL + url;
     }
 
     const newReq = req.clone({
         url,
-        headers: req.headers.set("Content-Type", "application/x-www-form-urlencoded")
+        headers: req.headers.set("Content-Type", "application/json; charset=utf-8")
     });
     return next.handle(newReq).pipe(
       mergeMap((event: any) => {

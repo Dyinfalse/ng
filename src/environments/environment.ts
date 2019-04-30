@@ -4,7 +4,7 @@
 
 export const environment = {
     // SERVER_URL: `https://cs.kuaihecaishui.com/api`,
-    SERVER_URL: `./`,
+    SERVER_URL: `/api/v1/right`,
     production: false,
     useHash: true,
     hmr: false,
