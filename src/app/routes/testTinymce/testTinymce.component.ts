@@ -8,7 +8,7 @@ import {
 export class TestTinymceComponent implements OnInit {
 
     htmlResult: string;
-    editorId:string = 'test-editorId';
+    editorId: string = 'test-editorId';
     template: string = `
         <div>
             <p>这里记录过去一周，我看到的值得分享的东西，每周五发布。</p>

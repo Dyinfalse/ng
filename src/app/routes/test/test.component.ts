@@ -231,11 +231,6 @@ export class TestComponent implements OnInit {
         }
       });
   }
-
-  keyupHandlerFunction(event){
-      console.log(event)
-  }
-
   /**
    * 处理param
    */
