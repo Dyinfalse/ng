@@ -10,11 +10,6 @@ import { TestDetilsModal } from './test/test.detils.modal';
 // 富文本编辑器
 import { MyeditorComponent } from '../tinymce';
 import { TestTinymceComponent } from './testTinymce/testTinymce.component';
-
-import { DashboardV1Component } from './dashboard/v1/v1.component';
-import { DashboardAnalysisComponent } from './dashboard/analysis/analysis.component';
-import { DashboardMonitorComponent } from './dashboard/monitor/monitor.component';
-import { DashboardWorkplaceComponent } from './dashboard/workplace/workplace.component';
 // passport pages
 import { UserLoginComponent } from './passport/login/login.component';
 import { UserRegisterComponent } from './passport/register/register.component';
@@ -27,10 +22,6 @@ const COMPONENTS = [
   MyeditorComponent,
   TestComponent,
   TestTinymceComponent,
-  DashboardV1Component,
-  DashboardAnalysisComponent,
-  DashboardMonitorComponent,
-  DashboardWorkplaceComponent,
   // passport pages
   UserLoginComponent,
   UserRegisterComponent,
