@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { SimpleGuard } from '@delon/auth';
 import { environment } from '@env/environment';
 import { TestComponent } from './test/test.component';
+import { CompanyComponent } from './company/company';
 // 富文本编辑器
 import { TestTinymceComponent } from './testTinymce/testTinymce.component';
 // layout
@@ -31,6 +32,8 @@ const routes: Routes = [
     children: [
       { path: '', component: TestComponent},
       { path: 'testTinymce', component: TestTinymceComponent },
+      { path: 'company', component: CompanyComponent },
+
       // { path: '', redirectTo: 'dashboard/v1', pathMatch: 'full' },
       // { path: 'dashboard', redirectTo: 'dashboard/v1', pathMatch: 'full' },
       // { path: 'dashboard/v1', component: DashboardV1Component },

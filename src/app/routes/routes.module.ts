@@ -4,9 +4,12 @@ import { SharedModule } from '@shared';
 import { RouteRoutingModule } from './routes-routing.module';
 
 // dashboard pages
-// test
+// html
 import { TestComponent } from './test/test.component';
+import { CompanyComponent } from './company/company';
+// modal
 import { TestDetilsModal } from './test/test.detils.modal';
+import { CompanyDetilsModal } from './company/company.modal';
 // 富文本编辑器
 import { MyeditorComponent } from '../tinymce';
 import { TestTinymceComponent } from './testTinymce/testTinymce.component';
@@ -20,6 +23,7 @@ import { CallbackComponent } from './callback/callback.component';
 
 const COMPONENTS = [
   MyeditorComponent,
+  CompanyComponent,
   TestComponent,
   TestTinymceComponent,
   // passport pages
@@ -31,7 +35,8 @@ const COMPONENTS = [
   CallbackComponent
 ];
 const COMPONENTS_NOROUNT = [
-  TestDetilsModal
+  TestDetilsModal,
+  CompanyDetilsModal
 ];
 
 @NgModule({

@@ -29,6 +29,13 @@
           "hideInBreadcrumb": true,
           "icon": "anticon anticon-edit",
           "link": "/testTinymce"
+        },
+        {
+          "text":"公司列表",
+          "group": true,
+          "hideInBreadcrumb": true,
+          "icon": "anticon anticon-edit",
+          "link": "/company"
         }
       ]
     }
