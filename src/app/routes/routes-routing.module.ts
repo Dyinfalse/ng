@@ -2,8 +2,19 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SimpleGuard } from '@delon/auth';
 import { environment } from '@env/environment';
-import { TestComponent } from './test/test.component';
+import { AreazoneComponent } from './areazone/areazone';
 import { CompanyComponent } from './company/company';
+import { DepartmentComponent } from './department/department';
+import { LogLoginComponent } from './loglogin/loglogin';
+import { LogPasswordComponent } from './logpassword/logpassword';
+import { MenusComponent } from './menus/menus';
+import { MenusFunctionComponent } from './menusfunction/menusfunction';
+import { PositionComponent } from './position/position';
+import { RoleComponent } from './role/role';
+import { RoleRightComponent } from './roleright/roleright';
+import { TradeComponent } from './trade/trade';
+import { UserComponent } from './user/user';
+import { UserRoleComponent } from './userrole/userrole';
 // 富文本编辑器
 import { TestTinymceComponent } from './testTinymce/testTinymce.component';
 // layout
@@ -30,10 +41,21 @@ const routes: Routes = [
     canActivate: [SimpleGuard],
     canActivateChild: [SimpleGuard],
     children: [
-      { path: '', component: TestComponent},
+      { path: '', component: CompanyComponent},
       { path: 'testTinymce', component: TestTinymceComponent },
-      { path: 'company', component: CompanyComponent },
-
+      // { path: 'company', component: CompanyComponent },
+      { path: 'areazone', component: AreazoneComponent },
+      { path: 'department', component: DepartmentComponent},
+      { path: 'loglogin', component: LogLoginComponent},
+      { path: 'logpassword', component: LogPasswordComponent},
+      { path: 'menus', component: MenusComponent},
+      { path: 'menusfunction', component: MenusFunctionComponent},
+      { path: 'position', component: PositionComponent},
+      { path: 'role', component: RoleComponent},
+      { path: 'roleright', component: RoleRightComponent},
+      { path: 'trade', component: TradeComponent},
+      { path: 'user', component: UserComponent},
+      { path: 'userrole', component: UserRoleComponent},
       // { path: '', redirectTo: 'dashboard/v1', pathMatch: 'full' },
       // { path: 'dashboard', redirectTo: 'dashboard/v1', pathMatch: 'full' },
       // { path: 'dashboard/v1', component: DashboardV1Component },

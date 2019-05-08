@@ -4,13 +4,13 @@ import { NzMessageService, NzModalService } from 'ng-zorro-antd';
 import { _HttpClient, ModalHelper  } from '@delon/theme';
 import { tap, map } from 'rxjs/operators';
 import { STComponent, STColumn, STData, STChange } from '@delon/abc';
-import { TestDetilsModal } from './test.detils.modal';
+import { MenusFunctionDetilsModal } from './menusfunction.modal';
 
 @Component({
-  templateUrl: './test.component.html',
+  templateUrl: './menusfunction.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TestComponent implements OnInit {
+export class MenusFunctionComponent implements OnInit {
   /**
    * 列表筛选条件
    */
@@ -36,12 +36,11 @@ export class TestComponent implements OnInit {
    * post Form
    */
   form: any = {
-    departid: '',
-    company: '',
-    parentid: '',
-    departname: '',
-    comments: '',
-    ischarge: ''
+    
+    menufuncid: '',
+    menuid: '',
+    menufuncname: '',
+    menufuncurl: '',
   }
   /**
    * 表格数据
@@ -64,31 +63,22 @@ export class TestComponent implements OnInit {
    */
   columns: STColumn[] = [
     { title: '', index: 'key', type: 'checkbox' },
+    
     {
-      title: '部门ID',
-      index: 'departid'
+      title: '功能 Id',
+      index: 'menufuncid'
     },
     {
-      title: '公司ID',
-      index: 'company',
-      // type: 'number' // number 默认text-left
+      title: '菜单ID',
+      index: 'menuid'
     },
     {
-      title: '上级部门ID',
-      index: 'parentid',
-      // type: 'number' // number 默认text-left
+      title: '菜单功能名称',
+      index: 'menufuncname'
     },
     {
-      title: '部门名称',
-      index: 'departname',
-    },
-    {
-      title: '描述',
-      index: 'comments',
-    },
-    {
-      title: '是否管理部门',
-      index: 'ischarge',
+      title: 'URL',
+      index: 'menufuncurl'
     },
     {
       title: '操作',
@@ -98,7 +88,7 @@ export class TestComponent implements OnInit {
             icon: 'edit',
             type: 'modal',
             modal: {
-                component: TestDetilsModal,
+                component: MenusFunctionDetilsModal,
                 params: record => {return {form: record}},
                 size: this.appConfig.ModalWidth
             },
@@ -108,7 +98,7 @@ export class TestComponent implements OnInit {
                 this.loading = true;
                 modal = this.buildParam(modal);
                 this.http
-                .put('/department/' + modal.departid, { ...modal })
+                .put('/menusfunction/' + modal.menufuncid, { ...modal })
                 .subscribe(() => {
                   this.msg.success(`编辑成功`);
                   this.getData();
@@ -148,7 +138,7 @@ export class TestComponent implements OnInit {
   getData() {
     this.loading = true;
     this.http
-      .get('/department', this.query)
+      .get('/menusfunction', this.query)
       .pipe(
         map((list: any) =>{
             return list;
@@ -187,7 +177,7 @@ export class TestComponent implements OnInit {
    */
   remove(row:any) {
     this.http
-      .delete('/department/' + row.departid)
+      .delete('/menusfunction/' + row.menufuncid)
       .subscribe(() => {
         this.getData();
         this.st.clearCheck();
@@ -200,7 +190,7 @@ export class TestComponent implements OnInit {
    */
   removeAll() {
     this.http
-      .delete('/department', { id: 1 })
+      .delete('/menusfunction', { id: 1 })
       .subscribe(() => {
         this.getData();
         this.st.clearCheck();
@@ -217,13 +207,13 @@ export class TestComponent implements OnInit {
    */
   add() {
     this.modal
-      .static(TestDetilsModal, {form: this.form}, this.appConfig.ModalWidth)
+      .static(MenusFunctionDetilsModal, {form: this.form}, this.appConfig.ModalWidth)
       .subscribe((modalRes) => {
         if(modalRes){
           this.loading = true;
           modalRes = this.buildParam(modalRes);
           this.http
-          .post('/department', { ...modalRes })
+          .post('/menusfunction', { ...modalRes })
           .subscribe(() => {
             this.msg.success(`新建成功`)
             this.getData()
@@ -236,12 +226,7 @@ export class TestComponent implements OnInit {
    */
   buildParam(form: any){
     let params:any = {};
-    if(form.departid){params.departid = parseInt(form.departid);}
-    if(form.parentid){params.parentid = parseInt(form.parentid);}
-    if(form.ischarge){params.ischarge = parseInt(form.ischarge);}
-    if(form.company){params.company = parseInt(form.company)}
-    if(form.departname){params.departname = form.departname}
-    if(form.comments){params.comments = form.comments}
+    if(form.menufuncid){params.menufuncid = parseInt(form.menufuncid);}if(form.menuid){params.menuid = parseInt(form.menuid);}if(form.menufuncname){params.menufuncname = form.menufuncname}if(form.menufuncurl){params.menufuncurl = form.menufuncurl}
     return params;
   }
   /**

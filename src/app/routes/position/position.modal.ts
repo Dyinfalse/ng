@@ -20,57 +20,46 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
         </div>
         <div class="modal-body">
           <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
-
+            
             <nz-form-item>
-              <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired nzFor="company">公司ID</nz-form-label>
+              <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired nzFor="posid">职位ID</nz-form-label>
               <nz-form-control [nzSm]="19" [nzXs]="24">
-                <input nz-input formControlName="company" placeholder="请输入公司id" id="company" />
-                <nz-form-explain *ngIf="validateForm.get('company')?.dirty && validateForm.get('company')?.errors">
-                  请输入公司id
+                <input nz-input formControlName="posid" placeholder="请输入职位ID" id="posid" />
+                <nz-form-explain *ngIf="validateForm.get('posid')?.dirty && validateForm.get('posid')?.errors">
+                  请输入职位ID
                 </nz-form-explain>
               </nz-form-control>
             </nz-form-item>
-
             <nz-form-item>
-              <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired nzFor="parentid">上级部门ID</nz-form-label>
+              <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired nzFor="posname">职位名称</nz-form-label>
               <nz-form-control [nzSm]="19" [nzXs]="24">
-                <input nz-input formControlName="parentid" placeholder="请输入上级部门ID" id="parentid" />
-                <nz-form-explain *ngIf="validateForm.get('parentid')?.dirty && validateForm.get('parentid')?.errors">
-                  请输入上级部门ID
+                <input nz-input formControlName="posname" placeholder="请输入职位名称" id="posname" />
+                <nz-form-explain *ngIf="validateForm.get('posname')?.dirty && validateForm.get('posname')?.errors">
+                  请输入职位名称
                 </nz-form-explain>
               </nz-form-control>
             </nz-form-item>
-
-            <nz-form-item>
-              <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired nzFor="departname">部门名称</nz-form-label>
-              <nz-form-control [nzSm]="19" [nzXs]="24">
-                <input nz-input formControlName="departname" placeholder="请输入部门名称" id="departname" />
-                <nz-form-explain *ngIf="validateForm.get('departname')?.dirty && validateForm.get('departname')?.errors">
-                  请输入部门名称
-                </nz-form-explain>
-              </nz-form-control>
-            </nz-form-item>
-
-            <nz-form-item>
-              <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired nzFor="comments">描述</nz-form-label>
+	    <nz-form-item>
+              <nz-form-label [nzSm]="5" [nzXs]="24" nzFor="comments">描述</nz-form-label>
               <nz-form-control [nzSm]="19" [nzXs]="24">
                 <input nz-input formControlName="comments" placeholder="请输入描述" id="comments" />
-                <nz-form-explain *ngIf="validateForm.get('comments')?.dirty && validateForm.get('comments')?.errors">
-                  请输入描述
-                </nz-form-explain>
               </nz-form-control>
             </nz-form-item>
-
-            <nz-form-item>
-              <nz-form-label [nzSm]="5" [nzXs]="24" nzRequired nzFor="ischarge">是否管理部门</nz-form-label>
+		
+	    <nz-form-item>
+              <nz-form-label [nzSm]="5" [nzXs]="24" nzFor="parentid">直属上级</nz-form-label>
               <nz-form-control [nzSm]="19" [nzXs]="24">
-                <input nz-input formControlName="ischarge" placeholder="请输入是否管理部门" id="ischarge" />
-                <nz-form-explain *ngIf="validateForm.get('ischarge')?.dirty && validateForm.get('ischarge')?.errors">
-                  请输入是否管理部门
-                </nz-form-explain>
+                <input nz-input formControlName="parentid" placeholder="请输入直属上级" id="parentid" />
               </nz-form-control>
             </nz-form-item>
-
+		
+	    <nz-form-item>
+              <nz-form-label [nzSm]="5" [nzXs]="24" nzFor="ismanage">是否管理职位</nz-form-label>
+              <nz-form-control [nzSm]="19" [nzXs]="24">
+                <input nz-input formControlName="ismanage" placeholder="请输入是否管理职位" id="ismanage" />
+              </nz-form-control>
+            </nz-form-item>
+		
           </form>
         </div>
         <div class="modal-footer">
@@ -83,7 +72,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
         </div>
     `
 })
-export class TestDetilsModal {
+export class PositionDetilsModal {
 
   constructor(private modal: NzModalRef, private fb: FormBuilder) { }
 
@@ -124,7 +113,11 @@ export class TestDetilsModal {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
     }
-    if(!this.validateForm.value.departname){
+    
+    if(!this.validateForm.value.posid){
+      return;
+    }
+    if(!this.validateForm.value.posname){
       return;
     }
     this.ok(this.validateForm.value);
@@ -132,13 +125,23 @@ export class TestDetilsModal {
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
-      departid: [this.form.departid],
-      company: [this.form.company, [Validators.required]],
-      parentid: [this.form.parentid, [Validators.required]],
-      // departname: [null, [Validators.required, this.confirmationValidator]],
-      departname: [this.form.departname, [Validators.required]],
-      comments: [this.form.comments, [Validators.required]],
-      ischarge: [this.form.ischarge, [Validators.required]]
+      
+	posid: [this.form.posid, [Validators.required]],
+	
+      
+	posname: [this.form.posname, [Validators.required]],
+	
+      
+	
+	comments: [this.form.comments],
+      
+	
+	parentid: [this.form.parentid],
+      
+	
+	ismanage: [this.form.ismanage],
+      
+      //company: [this.form.company, [Validators.required]],
     });
     if(this.form.departname){
       this.title = this.form.departname;

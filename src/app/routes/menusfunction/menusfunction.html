@@ -1,5 +1,5 @@
 <!-- 页面 -->
-<page-header [title]="'查询表格'"></page-header>
+<page-header [title]="'菜单功能'"></page-header>
 <nz-card [nzBordered]="false">
     <form nz-form [nzLayout]="'inline'" class="search__form">
         <div nz-row [nzGutter]="{ xs: 8, sm: 8, md: 8, lg: 24, xl: 48, xxl: 48 }">
@@ -11,17 +11,6 @@
                 </nz-form-item>
             </div>
             <button nz-button type="submit" [nzType]="'primary'" (click)="getData()" [nzLoading]="loading">查询</button>
-
-            <!-- <nz-dropdown [nzPlacement]="'bottomLeft'" style="float:right;margin-right: 20px;">
-                <button nz-button nz-dropdown>
-                    更多操作
-                    <i nz-icon type="down"></i>
-                </button>
-                <ul nz-menu>
-                    <li nz-menu-item (click)="removeAll()">批量删除</li>
-                    <li nz-menu-item (click)="approval()">批量审批</li>
-                </ul>
-            </nz-dropdown> -->
 
             <button nz-button (click)="add()" [nzType]="'primary'" style="float:right;margin-right: 20px;">
                 <i nz-icon type="plus"></i>

@@ -1,0 +1,23 @@
+<!-- 页面 -->
+<page-header [title]="'用户角色'"></page-header>
+<nz-card [nzBordered]="false">
+    <form nz-form [nzLayout]="'inline'" class="search__form">
+        <div nz-row [nzGutter]="{ xs: 8, sm: 8, md: 8, lg: 24, xl: 48, xxl: 48 }">
+            <div nz-col nzMd="4" nzSm="24">
+                <nz-form-item>
+                    <nz-form-control>
+                        <input nz-input [(ngModel)]="query.keyword" name="no" placeholder="请输入" id="no">
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <button nz-button type="submit" [nzType]="'primary'" (click)="getData()" [nzLoading]="loading">查询</button>
+
+            <button nz-button (click)="add()" [nzType]="'primary'" style="float:right;margin-right: 20px;">
+                <i nz-icon type="plus"></i>
+                <span>新建</span>
+            </button>
+        </div>
+    </form>
+    <st #st [columns]="columns" [data]="data" [pi]="query.page" [page]="stPage" [ps]="query.size" [total]="total" [loading]="loading" (change)="stChange($event)">
+    </st>
+</nz-card>

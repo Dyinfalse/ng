@@ -16,14 +16,6 @@
       "hideInBreadcrumb": true,
       "children": [
         {
-          "text":"测试表格页面",
-          "group": true,
-          "shortcutRoot": true,
-          "hideInBreadcrumb": true,
-          "icon": "anticon anticon-share-alt",
-          "link": "/"
-        },
-        {
           "text":"测试富文本页面",
           "group": true,
           "hideInBreadcrumb": true,
@@ -31,11 +23,97 @@
           "link": "/testTinymce"
         },
         {
+          "text":"区域",
+          "group": true,
+          "shortcutRoot": true,
+          "hideInBreadcrumb": true,
+          "icon": "anticon anticon-edit",
+          "link": "/areazone"
+        },
+        {
           "text":"公司列表",
+          "group": true,
+          "shortcutRoot": true,
+          "hideInBreadcrumb": true,
+          "icon": "anticon anticon-edit",
+          "link": "/"
+        },
+        {
+          "text":"部门列表",
           "group": true,
           "hideInBreadcrumb": true,
           "icon": "anticon anticon-edit",
-          "link": "/company"
+          "link": "/department"
+        },
+        {
+          "text":"登录日志",
+          "group": true,
+          "hideInBreadcrumb": true,
+          "icon": "anticon anticon-edit",
+          "link": "/loglogin"
+        },
+        {
+          "text":"密码修改日志",
+          "group": true,
+          "hideInBreadcrumb": true,
+          "icon": "anticon anticon-edit",
+          "link": "/logpassword"
+        },
+        {
+          "text":"菜单",
+          "group": true,
+          "hideInBreadcrumb": true,
+          "icon": "anticon anticon-edit",
+          "link": "/menus"
+        },
+        {
+          "text":"功能菜单",
+          "group": true,
+          "hideInBreadcrumb": true,
+          "icon": "anticon anticon-edit",
+          "link": "/menusfunction"
+        },
+        {
+          "text":"职位",
+          "group": true,
+          "hideInBreadcrumb": true,
+          "icon": "anticon anticon-edit",
+          "link": "/position"
+        },
+        {
+          "text":"角色",
+          "group": true,
+          "hideInBreadcrumb": true,
+          "icon": "anticon anticon-edit",
+          "link": "/role"
+        },
+        {
+          "text":"角色权限",
+          "group": true,
+          "hideInBreadcrumb": true,
+          "icon": "anticon anticon-edit",
+          "link": "/roleright"
+        },
+        {
+          "text":"行业",
+          "group": true,
+          "hideInBreadcrumb": true,
+          "icon": "anticon anticon-edit",
+          "link": "/trade"
+        },
+        {
+          "text":"用户",
+          "group": true,
+          "hideInBreadcrumb": true,
+          "icon": "anticon anticon-edit",
+          "link": "/user"
+        },
+        {
+          "text":"用户权限",
+          "group": true,
+          "hideInBreadcrumb": true,
+          "icon": "anticon anticon-edit",
+          "link": "/userrole"
         }
       ]
     }
