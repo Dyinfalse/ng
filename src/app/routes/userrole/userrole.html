@@ -16,6 +16,11 @@
                 <i nz-icon type="plus"></i>
                 <span>新建</span>
             </button>
+
+            <button nz-button (click)="add()" [nzType]="'primary'" style="float:right;margin-right: 20px;">
+                <i class="anticon anticon-user-add-o"></i>
+                <span>权限分配</span>
+            </button>
         </div>
     </form>
     <st #st [columns]="columns" [data]="data" [pi]="query.page" [page]="stPage" [ps]="query.size" [total]="total" [loading]="loading" (change)="stChange($event)">
