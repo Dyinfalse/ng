@@ -17,16 +17,23 @@ import { CountdownModule } from 'ngx-countdown';
 import { UEditorModule } from 'ngx-ueditor';
 import { NgxTinymceModule } from 'ngx-tinymce';
 
+// 共享UI组件
+import { NzTransferAdvancedComponent } from './component/nz.transfer.advanced.component';
+import { NzTreeSelectBasicComponent } from './component/nz.tree.select.basic.component';
+
 const THIRDMODULES = [
   NgZorroAntdModule,
   CountdownModule,
   UEditorModule,
-  NgxTinymceModule,
+  NgxTinymceModule
 ];
 // #endregion
 
 // #region your componets & directives
-const COMPONENTS = [];
+const COMPONENTS = [
+  NzTransferAdvancedComponent,
+  NzTreeSelectBasicComponent
+];
 const DIRECTIVES = [];
 // #endregion
 

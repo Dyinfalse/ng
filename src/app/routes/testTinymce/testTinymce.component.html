@@ -1,4 +1,7 @@
-<page-header [title]="'富文本编辑'"></page-header>
+
+<p>富文本编辑器</p>
+
+<page-header [title]="'项目组件库'"></page-header>
 <div nz-row [nzGutter]="16">
     <div nz-col nzMd="12" nzSm="24">
         <simple-tiny [elementId]="editorId" [template]="template" (onEditorKeyup)="keyupHandlerFunction($event)">
@@ -8,3 +11,15 @@
         <div id="htmlResult"></div>
     </div>
 </div>
+
+<hr>
+
+<p>穿梭框</p>
+
+<nz-transfer-advanced></nz-transfer-advanced>
+
+<hr>
+
+<p>Select Tree</p>
+
+<nz-tree-select-basic></nz-tree-select-basic>
