@@ -19,7 +19,27 @@ export class RoleRightComponent implements OnInit {
     page: 1,
     size: 10
   };
-  
+
+  listOfData: any = [
+    {
+      key: '1',
+      name: 'John Brown',
+      age: 32,
+      address: 'New York No. 1 Lake Park'
+    },
+    {
+      key: '2',
+      name: 'Jim Green',
+      age: 42,
+      address: 'London No. 1 Lake Park'
+    },
+    {
+      key: '3',
+      name: 'Joe Black',
+      age: 32,
+      address: 'Sidney No. 1 Lake Park'
+    }
+  ];
   /**
    * 分页总数
    */
@@ -36,7 +56,7 @@ export class RoleRightComponent implements OnInit {
    * post Form
    */
   form: any = {
-    
+
     rightid: '',
     roleid: '',
     menufuncid: '',
@@ -62,7 +82,7 @@ export class RoleRightComponent implements OnInit {
    */
   columns: STColumn[] = [
     { title: '', index: 'key', type: 'checkbox' },
-    
+
     {
       title: 'Right Id',
       index: 'rightid'
