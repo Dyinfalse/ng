@@ -143,6 +143,26 @@ export class RoleComponent implements OnInit {
       .subscribe(res => {
         this.total = res.total;
         this.data = res.data;
+        this.data = [
+          {
+            key: '1',
+            name: '管理员',
+            age: 32,
+            address: 'New York No. 1 Lake Park'
+          },
+          {
+            key: '2',
+            name: '主管',
+            age: 42,
+            address: 'London No. 1 Lake Park'
+          },
+          {
+            key: '3',
+            name: '销售',
+            age: 32,
+            address: 'Sidney No. 1 Lake Park'
+          }
+        ];
         this.cdr.detectChanges();
       });
   }

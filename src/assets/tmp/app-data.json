@@ -109,7 +109,7 @@
           "link": "/user"
         },
         {
-          "text":"用户权限",
+          "text":"用户角色",
           "group": true,
           "hideInBreadcrumb": true,
           "icon": "anticon anticon-edit",

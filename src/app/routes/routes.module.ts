@@ -32,6 +32,7 @@ import { RoleRightDetilsModal } from './roleright/roleright.modal';
 import { TradeDetilsModal } from './trade/trade.modal';
 import { UserDetilsModal } from './user/user.modal';
 import { UserRoleDetilsModal } from './userrole/userrole.modal';
+import { UserRoleDistributionModal } from './userrole/userrole.distribution.modal';
 // 富文本编辑器
 import { MyeditorComponent } from '../tinymce';
 import { TestTinymceComponent } from './testTinymce/testTinymce.component';
@@ -67,6 +68,7 @@ const COMPONENTS = [
   UserLockComponent,
   CallbackComponent
 ];
+// 弹窗
 const COMPONENTS_NOROUNT = [
   AreazoneDetilsModal,
   CompanyDetilsModal,
@@ -80,7 +82,8 @@ const COMPONENTS_NOROUNT = [
   RoleRightDetilsModal,
   TradeDetilsModal,
   UserDetilsModal,
-  UserRoleDetilsModal
+  UserRoleDetilsModal,
+  UserRoleDistributionModal
 ];
 
 @NgModule({

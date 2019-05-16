@@ -13,7 +13,7 @@ class AppConfigClass {
     /**
      * 模态框宽度
      */
-    ModalWidth:number = 600;
+    ModalWidth:number = 800;
 }
 
 export const AppConfig = new AppConfigClass();

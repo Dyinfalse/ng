@@ -5,6 +5,7 @@ import { _HttpClient, ModalHelper  } from '@delon/theme';
 import { tap, map } from 'rxjs/operators';
 import { STComponent, STColumn, STData, STChange } from '@delon/abc';
 import { UserRoleDetilsModal } from './userrole.modal';
+import { UserRoleDistributionModal } from './userrole.distribution.modal';
 
 @Component({
   templateUrl: './userrole.html',
@@ -102,6 +103,28 @@ export class UserRoleComponent implements OnInit {
             }
         },
         {
+            text: '分配权限',
+            icon: 'user-add',
+            type: 'modal',
+            modal: {
+                component: UserRoleDistributionModal,
+                params: record => {return {form: record}},
+                size: this.appConfig.ModalWidth
+            },
+            click: (record: any, modal: any) => {
+              if(modal){
+                // this.loading = true;
+                // modal = this.buildParam(modal);
+                // this.http
+                // .put('/userrole/' + modal.urid, { ...modal })
+                // .subscribe(() => {
+                //   this.msg.success(`分配成功`);
+                //   this.getData();
+                // });
+              }
+            }
+        },
+        {
           text: '删除',
           type: 'del',
           click: (item: any) => {
@@ -143,6 +166,26 @@ export class UserRoleComponent implements OnInit {
       .subscribe(res => {
         this.total = res.total;
         this.data = res.data;
+        this.data = [
+          {
+            key: '1',
+            name: '管理员',
+            age: 32,
+            address: 'New York No. 1 Lake Park'
+          },
+          {
+            key: '2',
+            name: '主管',
+            age: 42,
+            address: 'London No. 1 Lake Park'
+          },
+          {
+            key: '3',
+            name: '销售',
+            age: 32,
+            address: 'Sidney No. 1 Lake Park'
+          }
+        ];
         this.cdr.detectChanges();
       });
   }
