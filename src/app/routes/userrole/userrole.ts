@@ -20,7 +20,7 @@ export class UserRoleComponent implements OnInit {
     page: 1,
     size: 10
   };
-  
+
   /**
    * 分页总数
    */
@@ -37,7 +37,7 @@ export class UserRoleComponent implements OnInit {
    * post Form
    */
   form: any = {
-    
+
     urid: '',
     userid: '',
     roleid: '',
@@ -63,7 +63,7 @@ export class UserRoleComponent implements OnInit {
    */
   columns: STColumn[] = [
     { title: '', index: 'key', type: 'checkbox' },
-    
+
     {
       title: '用户角色ID',
       index: 'urid'
@@ -168,21 +168,21 @@ export class UserRoleComponent implements OnInit {
         this.data = res.data;
         this.data = [
           {
-            key: '1',
-            name: '管理员',
-            age: 32,
+            urid: '1',
+            userid: '管理员',
+            roleid: 1,
             address: 'New York No. 1 Lake Park'
           },
           {
-            key: '2',
-            name: '主管',
-            age: 42,
+            urid: '2',
+            userid: '主管',
+            roleid: 2,
             address: 'London No. 1 Lake Park'
           },
           {
-            key: '3',
-            name: '销售',
-            age: 32,
+            urid: '3',
+            userid: '销售',
+            roleid: 3,
             address: 'Sidney No. 1 Lake Park'
           }
         ];

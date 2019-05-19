@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { NzModalRef } from 'ng-zorro-antd';
+import { NzModalRef, NzMessageService } from 'ng-zorro-antd';
 
 /**
  * @text [主键]
@@ -9,7 +9,7 @@ import { NzModalRef } from 'ng-zorro-antd';
  *   <nz-form-control [nzSm]="19" [nzXs]="24">
  *       <input type="number" nz-input [(ngModel)]="form.departid" name="departid" placeholder="请输入部门ID" id="no">
  *   </nz-form-control>
- * </nz-form-item> 
+ * </nz-form-item>
  * ```
  */
 @Component({
@@ -18,7 +18,7 @@ import { NzModalRef } from 'ng-zorro-antd';
             <div class="modal-title">分配权限</div>
         </div>
         <div class="modal-body">
-          <p>用户名称：{{form.name}}</p>
+          <p>用户名称：{{form.userid}}</p>
           <div>
             <nz-transfer
               [nzDataSource]="list"
@@ -51,27 +51,54 @@ import { NzModalRef } from 'ng-zorro-antd';
 })
 export class UserRoleDistributionModal {
 
-  constructor(private modal: NzModalRef) { }
+  constructor(private modal: NzModalRef, public msg: NzMessageService) { }
 
+  list: Array<{ key: string; title: string; description: string; direction: string }> = [];
   //   弹窗入参
   form:any;
+
+  getData(): void {
+    const ret: Array<{ key: string; title: string; description: string; direction: string }> = [];
+    for (let i = 0; i < 20; i++) {
+      ret.push({
+        key: i.toString(),
+        title: `content${i + 1}`,
+        description: `description of content${i + 1}`,
+        direction: Math.random() * 2 > 1 ? 'right' : ''
+      });
+    }
+    this.list = ret;
+  }
+
+  reload(direction: string): void {
+    this.getData();
+    this.msg.success(`your clicked ${direction}!`);
+  }
+
+  select(ret: {}): void {
+    console.log('nzSelectChange', ret);
+  }
+
+  change(ret: {}): void {
+    console.log('nzChange', ret);
+  }
 
   cancel() {
     this.modal.destroy();
   }
 
   ok() {
-    
+
   }
 
   /**
    * 提交表单
    */
   submitForm(): void {
-    
+
   }
 
   ngOnInit(): void {
-    
+    this.getData();
   }
 }
